@@ -5,7 +5,7 @@ const jsonConfig = fs.existsSync('config.json')
 const envConfig = { ...process.env }
 for (const envKey of Object.keys(envConfig)) {
   if (!envKey.startsWith('app_')) delete envConfig[envKey]
-  else envConfig[envConfig] = envConfig[envConfig].slice(4)
+  else envConfig[envKey] = envConfig[envKey].slice(4)
 }
 
 module.exports = {
