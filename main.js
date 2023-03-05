@@ -2,6 +2,11 @@ const { ref, computed, watch } = require('vue')
 const getLessons = require('./get_lessons')
 const { getTargetWeekday, stringForMinutes } = require('./date_utility')
 const { broadcastLessons, newUserEvent } = require('./get_bot')
+const express = require('express')
+
+const server = express()
+server.get('/', (req, res) => res.send('It works!'))
+server.listen('8080')
 
 const lessons = ref([])
 const loading = ref(true)
@@ -54,11 +59,10 @@ async function updateLessons() {
     updateLessonsInfo()
     loading.value = false
     error.value = null
-  }
-  catch(e) {
+  } catch (e) {
     error.value = JSON.stringify(e, 0, 2)
-  	console.log('fetching error: ', e)
-  	setTimeout(updateLessons, 1000 * 60 * 15)
+    console.log('fetching error: ', e)
+    setTimeout(updateLessons, 1000 * 60 * 15)
   }
 }
 function updateLessonsInfo() {
