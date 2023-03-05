@@ -4,5 +4,8 @@
   "tgToken": "",
   "timezoneOffset": 3,
   "nextDayHour": 15,
-  "registerCode": ""
+  "registerCode": "",
+  "proxyHost": "",
+  "proxyPort": "",
+  "proxyAuth": ""
 }
