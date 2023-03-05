@@ -1,9 +1,9 @@
 {
+  "timezoneOffset": 3,
+  "nextDayHour": 15,
   "username": "ArieX",
   "password": "",
   "tgToken": "",
-  "timezoneOffset": 3,
-  "nextDayHour": 15,
   "registerCode": "",
   "proxyHost": "",
   "proxyPort": "",
