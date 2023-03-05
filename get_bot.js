@@ -16,6 +16,10 @@ class Event {
   }
 }
 const newUserEvent = new Event()
+if (!config.tgToken) {
+  console.error('Telegram token not specified')
+  process.exit(1)
+}
 const bot = new TelegramBot(config.tgToken, { polling: true })
 bot.on('message', async msg => {
   if (msg.text != config.registerCode) return

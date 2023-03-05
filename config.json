@@ -1,8 +1,8 @@
 {
   "username": "ArieX",
-  "password": "...",
-  "tgToken": "...",
+  "password": "",
+  "tgToken": "",
   "timezoneOffset": 3,
   "nextDayHour": 15,
-  "registerCode": "..."
+  "registerCode": ""
 }
