@@ -63,6 +63,7 @@ async function broadcastLessons(message) {
       .catch(async e => {
         console.log('error while editing:', e.toString())
 
+        if (e.toString().includes('start tag')) console.log(message)
         if (
           e.toString().includes('exactly the same') ||
           e.toString().includes('ETIMEDOUT')

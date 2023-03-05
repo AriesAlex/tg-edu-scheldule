@@ -1,5 +1,15 @@
-const axios = require('axios').default
 const config = require('./get_config')
+const HttpsProxyAgent = require('https-proxy-agent')
+const httpsAgent = new HttpsProxyAgent({
+  host: config.proxyHost,
+  port: config.proxyPort,
+  auth: config.proxyAuth,
+})
+
+const axios = config.proxyHost
+  ? require('axios').default.create({ httpsAgent })
+  : require('axios')
+
 const {
   getTargetDate,
   getTargetWeekday,
@@ -63,7 +73,7 @@ module.exports = async function getLessons() {
 
   for (const lesson of lessons) {
     lesson.passed = lesson.endDate < new Date()
-    if(!lesson.name) lesson.name = 'Неизвестный урок'
+    if (!lesson.name) lesson.name = 'Неизвестный урок'
     lesson.name = lesson.name.replace(/[^\u0400-\u04FF\s]/g, '').trim()
     lesson.name = lesson.name.slice(0, 1).toUpperCase() + lesson.name.slice(1)
   }

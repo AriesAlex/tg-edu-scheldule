@@ -4,14 +4,20 @@ const { getTargetWeekday, stringForMinutes } = require('./date_utility')
 const { broadcastLessons, newUserEvent } = require('./get_bot')
 const express = require('express')
 
-const server = express()
-server.get('/', (req, res) => res.send('It works!'))
-server.listen('8080')
-
 const lessons = ref([])
 const loading = ref(true)
 const error = ref(null)
 const lessonsTimeMessage = ref('')
+
+const server = express()
+server.get('/', (req, res) =>
+  res.send(
+    lessonsTimeMessage.value +
+      '<br><br>===<br><br>' +
+      JSON.stringify(lessons.value, 0, 2)
+  )
+)
+server.listen('8080')
 
 const targetWeekday = ref(getTargetWeekday())
 const lessonsAsMessage = computed(() => {
