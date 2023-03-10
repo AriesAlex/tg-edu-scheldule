@@ -17,7 +17,7 @@ server.get('/', (req, res) =>
       JSON.stringify(lessons.value, 0, 2)
   )
 )
-server.listen('8080')
+//server.listen('8080')
 
 const targetWeekday = ref(getTargetWeekday())
 const lessonsAsMessage = computed(() => {
